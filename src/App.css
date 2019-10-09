@@ -1,22 +1,21 @@
-.App {
-  text-align: center;
+.App {}
+
+
+
+.debug {
+  /* border: 1px solid black; */
 }
 
-.App-logo {
-  height: 40vmin;
+
+.ticket {
+  cursor: pointer;
+  transition: box-shadow .3s;
+  border: 1px solid #ccc;
+  background: #fff;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.ticket:hover {
 
-.App-link {
-  color: #09d3ac;
+  box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
