@@ -457,7 +457,7 @@ export default class Example extends React.Component {
                 <NavLink href="https://github.com/nurikk/IMI_ASSIGNMENT_2">GitHub</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/assesment-points.html">Assesment required stuff</NavLink>
+                <NavLink href="./assesment-points.html">Assesment required stuff</NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -479,10 +479,6 @@ export default class Example extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
-        <AudioPlayer
-          autoPlay
-          src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Never+Gonna+Give+You+Up-+Original&filename=mz/Mzg1ODMxNTIzMzg1ODM3_JzthsfvUY24.MP3"
-        />
         </header>
         { searchFormVisible ? <SearchForm onSubmit={this.startSearch}/> : null} 
 
