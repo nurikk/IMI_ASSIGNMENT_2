@@ -59,9 +59,10 @@ export default class AirportAutosuggest extends React.Component {
     };
 
     render() {
-        const {id, placeholder} = this.props;
+        const {id, placeholder, required} = this.props;
         const {value, suggestions} = this.state;
         const inputProps = {
+            required,
             className: 'form-control',
             placeholder,
             value,
