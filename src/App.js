@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import logo from './logo.svg';
 import './App.css';
+import './firework.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import AirportAutosuggest from './AirportAutosuggest';
@@ -448,12 +449,74 @@ function Redirect() {
     );
 }
 
+function CalculateResults(){
+  const tasks = [
+    ["Use of HTML5 structural elements such as header, footer, nav, article and section, instead of div", 2],
+    ["Correct use of nav and ul for navigational menu", 2],
+    ["Correct use of hyperlinks (both absolute and relative)", 2],
+    ["Demonstrated competent use of other HTML elements such as table, ol etc,", 2],
+    ["Provide adequate comments", 2],
+    ["Use of embedded style sheets with the occasional inline style rules", 2],
+    ["Use of CSS for background image, fonts and colours", 2],
+    ["Demonstrated the application of the CSS box model (margin, border, padding, content)", 4],
+    ["Use of CSS framework such as Bootstrap or Foundation", 2],
+    ["Displays at least 5 images",2],
+    ["Displays at least 2 videos",2],
+    ["Loads at least 1 music file",2],
+    ["Use of other web APIs such as Google Maps",2],
+    ["Use of CSS or JS image slider/gallery",2],
+    ["Complete web form of at least 3 different types of fields (text fields, textarea, radio buttons, checkboxes, buttons)",2],
+    ["Perform form validation such as required fields",3],
+    ["A response on submitting the form",1],
+    ["Use of javascript function for example in web form",1],
+    ["Uploaded to a webhost and be a “live” website with shortened URL (goo.gl)",2],
+    ["Neat folder structure with separate folders for CSS, JS and assets",1]
+  ];
+
+  const [progres, setProgres] = useState(0);
+  const isDone =  tasks.length <= progres;
+  useInterval(() => {
+    setProgres(progres + 1);
+}, isDone ? null : 300);
+
+
+  const prog = 100 / tasks.length  * progres;
+
+  const tasksDone = [];
+  let score = 0;
+
+  for (let i =0; i < progres; i++) {
+    const task = tasks[i];
+    score+= task[1];
+    tasksDone.push(<li key={i} className="small list-group-item d-flex justify-content-between align-items-center">
+    {task[0]}
+    <span className="badge badge-primary badge-pill">{task[1]}</span>
+  </li>);
+  }
+  return (<div className="w-50 mr-auto ml-auto align-items-center">
+          <h1>Score is {score}</h1>
+          {isDone ? (
+            <div className="pyro">
+            <div className="before"></div>
+            <div className="after"></div>
+          </div>): null}
+            <div className="text-center">Calculating... {prog}%</div>
+            <Progress max={100} animated value={prog}/>
+
+            <ul className="list-group">
+              {tasksDone}
+            </ul>
+
+  </div>);
+}
+
 export default class Example extends React.Component {
 
     constructor(props) {
         super(props);
         //default state initialisation
         this.state = {
+            showResultsIsVisible: false,
             navBarIsOpen: false,
             searchFormVisible: true,
             searchResultsVisible: false,
@@ -485,6 +548,11 @@ export default class Example extends React.Component {
             navBarIsOpen: !this.state.navBarIsOpen
         });
     }
+    showResults = () => {
+      this.setState({
+        showResultsIsVisible: true
+      });
+    }
 
     render() {
         //main render routine
@@ -494,8 +562,13 @@ export default class Example extends React.Component {
             searchResultsVisible,
             prerollIsVisible,
             redirectIsVisible,
-            agencyWebsiteIsVidible
+            agencyWebsiteIsVidible,
+            showResultsIsVisible
         } = this.state;
+        if (showResultsIsVisible) {
+          return <CalculateResults />;
+        }
+
         return agencyWebsiteIsVidible
             ? <BookingAgencyWebsite/>
             : (
@@ -508,6 +581,9 @@ export default class Example extends React.Component {
                                 <Nav className="ml-auto" navbar>
                                     <NavItem>
                                         <NavLink href="https://github.com/nurikk/IMI_ASSIGNMENT_2">GitHub</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink href="#" onClick={this.showResults}><b>Assesment score</b></NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink href="./assesment-points.html">Assesment required stuff</NavLink>
