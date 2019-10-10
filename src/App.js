@@ -494,6 +494,8 @@ function CalculateResults(){
   </li>);
   }
   return (<div className="w-50 mr-auto ml-auto align-items-center">
+  <AudioPlayer autoPlay
+                src="https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptitle=Never+Gonna+Give+You+Up-+Original&filename=mz/Mzg1ODMxNTIzMzg1ODM3_JzthsfvUY24.MP3" />
           <h1>Score is {score}</h1>
           {isDone ? (
             <div className="pyro">
