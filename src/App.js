@@ -580,7 +580,7 @@ export default class Example extends React.Component {
                             <Collapse isOpen={navBarIsOpen} navbar>
                                 <Nav className="ml-auto" navbar>
                                     <NavItem>
-                                        <NavLink href="https://github.com/nurikk/IMI_ASSIGNMENT_2">GitHub</NavLink>
+                                        <NavLink href="https://github.com/nurikk/IMI_ASSIGNMENT_2">Source code</NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink href="#" onClick={this.showResults}><b>Assesment score</b></NavLink>
